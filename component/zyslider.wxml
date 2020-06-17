@@ -1,11 +1,12 @@
 <!--component/zyslider.wxml-->
-
+<wxs module="handler" src="./zyslider.wxs"></wxs>
 <view class="container {{hideOption}}"> 
-<view class="slider-item min" style="left:{{leftValue}}rpx;background-color:{{blockColor}};" catchtouchmove="_minMove"></view>
-<view class="slider-item max" style="left:{{rightValue}}rpx;background-color:{{blockColor}};" catchtouchmove="_maxMove"></view>
+  <view class="show-money">{{handler.showMessage(lowValue, highValue)}}</view>
+  <view class="slider-item min" style="z-index: {{minZ}};left:{{leftValue}}rpx;background-color:{{blockColor}};" catchtouchstart="throttleMin" catchtouchmove="throttleMin" catchtouchend="_minMoveEnd"></view>
+  <view class="slider-item max" style="z-index: {{maxZ}};left:{{rightValue}}rpx;background-color:{{blockColor}};" catchtouchstart="throttleMax" catchtouchmove="throttleMax" catchtouchend="_maxMoveEnd"></view>
 
-<view class="slider-body left" style="left:{{sliderLength}}rpx; width:{{leftValue}}rpx;background-color:{{backgroundColor}};"></view>
-<view class="slider-body body" style="left:{{leftValue}}rpx; width:{{rightValue-leftValue}}rpx;background-color:{{selectedColor}};"></view>
-<view class="slider-body right" style="left:{{rightValue}}rpx; width:{{totalLength - rightValue}}rpx;background-color:{{backgroundColor}};"></view>
-<slot></slot>
+  <view class="slider-body left" style="left:{{sliderLength}}rpx; width:{{leftValue}}rpx;background-color:{{backgroundColor}};"></view>
+  <view class="slider-body body" style="left:{{leftValue + sliderLength/2}}rpx; width:{{rightValue-leftValue}}rpx;background-color:{{selectedColor}};"></view>
+  <view class="slider-body right" style="left:{{rightValue}}rpx; width:{{totalLength - rightValue}}rpx;background-color:{{backgroundColor}};"></view>
+  <slot></slot>
 </view>

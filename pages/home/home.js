@@ -6,9 +6,7 @@ Page({
    */
   data: {
     low: 0,
-    heigh: 100,
-    low1: 200,
-    heigh1: 500
+    high: 100,
   },
 
   /**
@@ -24,23 +22,12 @@ Page({
     })
   },
 
-  heighValueChangeAction: function (e) {
+  highValueChangeAction: function (e) {
     this.setData({
-      heigh: e.detail.heighValue
+      high: e.detail.highValue
     })
   },
 
-  lowValueChangeAction1: function (e) {
-    this.setData({
-      low1: e.detail.lowValue
-    })
-  },
-
-  heighValueChangeAction1: function (e) {
-    this.setData({
-      heigh1: e.detail.heighValue
-    })
-  },
 
   hideSlider: function (e) {
     this.selectComponent("#zy-slider").hide()

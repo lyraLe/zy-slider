@@ -14,6 +14,8 @@
 	"libVersion": "2.1.1",
 	"appid": "touristappid",
 	"projectname": "zy-slider",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

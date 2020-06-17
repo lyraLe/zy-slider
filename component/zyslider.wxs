@@ -1,0 +1,12 @@
+var showMessage = function (low, high) {
+  if (low === high) {
+    if (low === 0) {
+      return "不限";
+    }
+    return high + 'K以上';
+  }
+  return low+'K-' + high + 'K';
+}
+module.exports = {
+  showMessage: showMessage
+}
