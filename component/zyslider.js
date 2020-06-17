@@ -100,6 +100,12 @@ Component({
       this.debounce(this.minMoveEvent(e, false), 100);
     },
     minMoveEvent(e, flag) {
+      if (this.data.minValue === this.data.maxValue) {
+        this.setData({
+          maxZ: 1,
+          minZ: 2
+        })
+      }
       let pagex = e.changedTouches[0].pageX / this.data.ratio - this.data.containerLeft - this.data.sliderLength / 2;
       if (pagex >= this.data.rightValue) {
         pagex = this.data.rightValue;
@@ -130,6 +136,12 @@ Component({
       this.minMoveEvent(e, true);
     },
     maxMoveEvent(e, flag) {
+      if (this.data.minValue === this.data.maxValue) {
+        this.setData({
+          maxZ: 2,
+          minZ: 1
+        })
+      }
       let pagex = e.changedTouches[0].pageX / this.data.ratio - this.data.containerLeft - this.data.sliderLength / 2;
       if (pagex <= this.data.leftValue) {
         pagex = this.data.leftValue;// + this.data.sliderLength
