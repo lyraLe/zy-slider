@@ -96,22 +96,13 @@ Component({
     /**
      * 左边滑块滑动
      */
-    _minMove: function (e) {
-      this.debounce(this.minMoveEvent(e, false), 100);
-    },
     minMoveEvent(e, flag) {
-      if (this.data.minValue === this.data.maxValue) {
-        this.setData({
-          maxZ: 1,
-          minZ: 2
-        })
-      }
       let pagex = e.changedTouches[0].pageX / this.data.ratio - this.data.containerLeft - this.data.sliderLength / 2;
       if (pagex >= this.data.rightValue) {
         pagex = this.data.rightValue;
         this.setData({
-          maxZ: 1,
-          minZ: 2
+          maxZ: 2,
+          minZ: 1
         })
       } else if (pagex <= 0) {
         pagex = 0;
@@ -136,18 +127,12 @@ Component({
       this.minMoveEvent(e, true);
     },
     maxMoveEvent(e, flag) {
-      if (this.data.minValue === this.data.maxValue) {
-        this.setData({
-          maxZ: 2,
-          minZ: 1
-        })
-      }
       let pagex = e.changedTouches[0].pageX / this.data.ratio - this.data.containerLeft - this.data.sliderLength / 2;
       if (pagex <= this.data.leftValue) {
         pagex = this.data.leftValue;// + this.data.sliderLength
         this.setData({
-          maxZ: 2,
-          minZ: 1
+          maxZ: 1,
+          minZ: 2
         })
       } else if (pagex >= this.data.totalLength) {
         pagex = this.data.totalLength
@@ -167,18 +152,6 @@ Component({
     },
     _maxMoveEnd(e) {
       this.maxMoveEvent(e, true);
-    },
-    debounce: function (fn, interval) {
-      var timer;
-      var gapTime = interval || 1000; //间隔时间，如果interval不传，则默认1000ms
-      return function () {
-        clearTimeout(timer);
-        var context = this;
-        var args = arguments; //保存此处的arguments，因为setTimeout是全局的，arguments不是防抖函数需要的。
-        timer = setTimeout(function () {
-          fn.call(context, args);
-        }, gapTime);
-      };
     },
     throttleMin: function (e) {
       let current = Date.now();
